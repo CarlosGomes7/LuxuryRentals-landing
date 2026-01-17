@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Base Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply text-primary-900 leading-relaxed;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold leading-tight;
+  }
+}
+
+/* Custom Components */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-semibold text-sm tracking-wide transition-all duration-300 cursor-pointer border-none;
+  }
+  
+  .btn-primary {
+    @apply bg-accent-300 text-primary-900 hover:bg-accent-100 hover:shadow-xl hover:shadow-accent-100/30 hover:-translate-y-1;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-900;
+  }
+  
+  .btn-dark {
+    @apply bg-primary-900 text-white hover:bg-primary-800 hover:-translate-y-1;
+  }
+  
+  .section-badge {
+    @apply inline-block bg-accent-100 text-primary-900 px-6 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-6;
+  }
+  
+  .section-title {
+    @apply text-4xl md:text-5xl text-primary-900 mb-6;
+  }
+  
+  .section-subtitle {
+    @apply text-lg text-gray-500 max-w-2xl mx-auto;
+  }
+  
+  .card {
+    @apply bg-white rounded-3xl shadow-lg transition-all duration-500;
+  }
+  
+  .card-hover:hover {
+    @apply -translate-y-3 shadow-2xl;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent-500 to-accent-400 bg-clip-text text-transparent;
+  }
+  
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+  
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent-500 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-accent-600;
+}
