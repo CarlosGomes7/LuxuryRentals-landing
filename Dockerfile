@@ -6,13 +6,14 @@ WORKDIR /app
 # Copiar package files
 COPY package*.json ./
 
-# Instalar dependencias
-RUN npm ci
+# Limpiar cache de npm e instalar
+RUN npm cache clean --force && \
+    npm ci --legacy-peer-deps
 
-# Copiar todo el código fuente
+# Copiar código fuente
 COPY . .
 
-# Construir la aplicación
+# Construir con permisos correctos
 RUN npm run build
 
 # Etapa 2: Producción con Nginx
@@ -21,11 +22,8 @@ FROM nginx:alpine
 # Copiar configuración de nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copiar los archivos construidos desde la etapa anterior
+# Copiar archivos construidos
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Puerto
 EXPOSE 80
-
-# Iniciar nginx
 CMD ["nginx", "-g", "daemon off;"]
