@@ -6,15 +6,14 @@ WORKDIR /app
 # Copiar package files
 COPY package*.json ./
 
-# Limpiar cache de npm e instalar
-RUN npm cache clean --force && \
-    npm ci --legacy-peer-deps
+# Instalar dependencias
+RUN npm install
 
 # Copiar código fuente
 COPY . .
 
-# Construir con permisos correctos
-RUN npm run build
+# Construir usando npx (evita problemas de permisos)
+RUN npx vite build
 
 # Etapa 2: Producción con Nginx
 FROM nginx:alpine
